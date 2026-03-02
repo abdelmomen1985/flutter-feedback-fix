@@ -237,6 +237,11 @@ class FeedbackWidgetState extends State<FeedbackWidget>
                                 onControlModeChanged: (mode) {
                                   setState(() {
                                     this.mode = mode;
+                                    if (mode == FeedbackMode.navigate) {
+                                      // Clear drawing and text so the next session starts clean
+                                      painterController.clear();
+                                      textEditingController.clear();
+                                    }
                                     _hideKeyboard(context);
                                   });
                                 },
